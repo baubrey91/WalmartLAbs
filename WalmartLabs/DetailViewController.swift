@@ -13,7 +13,7 @@ class DetailViewController: UIViewController {
     var products = [Product]()
     var productIndex: Int!
     
-    @IBOutlet weak var collectionView: UICollectionViewCell!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     
     override func viewDidLoad() {
@@ -24,5 +24,16 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return products.count
+    }
     
+
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as! ProductCollectionViewCell
+        cell.product = products[indexPath.row]
+        
+        return cell
+    }
 }

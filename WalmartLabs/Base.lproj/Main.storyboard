@@ -110,25 +110,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wn5-tV-AA6">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wn5-tV-AA6">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Tsh-7h-Ylq">
-                                    <size key="itemSize" width="374" height="601"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Tsh-7h-Ylq">
+                                    <size key="itemSize" width="375" height="602"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6V0-6i-YEa">
-                                        <rect key="frame" x="0.5" y="0.0" width="374" height="601"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductCollectionViewCell" id="6V0-6i-YEa" customClass="ProductCollectionViewCell" customModule="WalmartLabs" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1" width="375" height="602"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="601"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="602"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVe-6h-cbU">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVe-6h-cbU" customClass="CustomImageView" customModule="WalmartLabs" customModuleProvider="target">
                                                     <rect key="frame" x="67" y="133" width="240" height="223"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -148,6 +147,11 @@
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <connections>
+                                            <outlet property="price" destination="aR3-C0-j40" id="gWn-YS-Agl"/>
+                                            <outlet property="productImage" destination="XVe-6h-cbU" id="WGL-vb-AGJ"/>
+                                            <outlet property="productName" destination="IGK-ep-j2M" id="9bM-wM-Mvw"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -157,9 +161,15 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Wn5-tV-AA6" firstAttribute="leading" secondItem="sbM-3q-1Rx" secondAttribute="leading" id="bdm-Xa-Mrd"/>
+                            <constraint firstItem="Wn5-tV-AA6" firstAttribute="top" secondItem="sbM-3q-1Rx" secondAttribute="top" id="lYR-Xn-qdA"/>
+                            <constraint firstAttribute="trailing" secondItem="Wn5-tV-AA6" secondAttribute="trailing" id="wy7-Ci-fM1"/>
+                            <constraint firstItem="n3W-iD-365" firstAttribute="top" secondItem="Wn5-tV-AA6" secondAttribute="bottom" id="y4K-ob-Emw"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="6V0-6i-YEa" id="ieX-XG-0Qx"/>
+                        <outlet property="collectionView" destination="Wn5-tV-AA6" id="KJM-yq-t7A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nM9-4D-R2J" userLabel="First Responder" sceneMemberID="firstResponder"/>

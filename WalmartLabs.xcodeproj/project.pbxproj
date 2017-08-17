@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		39A9B7841F4543190048A4DD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A9B7831F4543190048A4DD /* DetailViewController.swift */; };
 		39A9B7861F454AAC0048A4DD /* PullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A9B7851F454AAC0048A4DD /* PullToRefresh.swift */; };
+		39A9B7881F455F0A0048A4DD /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A9B7871F455F0A0048A4DD /* ProductCollectionViewCell.swift */; };
 		CA649AC81F44DC9A00E5D076 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA649AC71F44DC9A00E5D076 /* AppDelegate.swift */; };
 		CA649ACA1F44DC9A00E5D076 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA649AC91F44DC9A00E5D076 /* MainViewController.swift */; };
 		CA649ACD1F44DC9A00E5D076 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA649ACB1F44DC9A00E5D076 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		39A9B7831F4543190048A4DD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		39A9B7851F454AAC0048A4DD /* PullToRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefresh.swift; sourceTree = "<group>"; };
+		39A9B7871F455F0A0048A4DD /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA649AC41F44DC9A00E5D076 /* WalmartLabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalmartLabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA649AC71F44DC9A00E5D076 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA649AC91F44DC9A00E5D076 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -99,8 +101,9 @@
 		CA649AE11F4515FD00E5D076 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CA649ADF1F45067000E5D076 /* ProductTableViewCell.swift */,
 				CA649AE31F45161E00E5D076 /* CustomImageView.swift */,
+				39A9B7871F455F0A0048A4DD /* ProductCollectionViewCell.swift */,
+				CA649ADF1F45067000E5D076 /* ProductTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				CA649AE01F45067000E5D076 /* ProductTableViewCell.swift in Sources */,
 				39A9B7861F454AAC0048A4DD /* PullToRefresh.swift in Sources */,
 				CA649AC81F44DC9A00E5D076 /* AppDelegate.swift in Sources */,
+				39A9B7881F455F0A0048A4DD /* ProductCollectionViewCell.swift in Sources */,
 				CA649ADB1F44E17400E5D076 /* Client.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
