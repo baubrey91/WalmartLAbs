@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39A9B7841F4543190048A4DD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A9B7831F4543190048A4DD /* DetailViewController.swift */; };
+		39A9B7861F454AAC0048A4DD /* PullToRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A9B7851F454AAC0048A4DD /* PullToRefresh.swift */; };
 		CA649AC81F44DC9A00E5D076 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA649AC71F44DC9A00E5D076 /* AppDelegate.swift */; };
-		CA649ACA1F44DC9A00E5D076 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA649AC91F44DC9A00E5D076 /* ViewController.swift */; };
+		CA649ACA1F44DC9A00E5D076 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA649AC91F44DC9A00E5D076 /* MainViewController.swift */; };
 		CA649ACD1F44DC9A00E5D076 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA649ACB1F44DC9A00E5D076 /* Main.storyboard */; };
 		CA649ACF1F44DC9A00E5D076 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA649ACE1F44DC9A00E5D076 /* Assets.xcassets */; };
 		CA649AD21F44DC9A00E5D076 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA649AD01F44DC9A00E5D076 /* LaunchScreen.storyboard */; };
@@ -19,9 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		39A9B7831F4543190048A4DD /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		39A9B7851F454AAC0048A4DD /* PullToRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefresh.swift; sourceTree = "<group>"; };
 		CA649AC41F44DC9A00E5D076 /* WalmartLabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalmartLabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA649AC71F44DC9A00E5D076 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CA649AC91F44DC9A00E5D076 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CA649AC91F44DC9A00E5D076 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CA649ACC1F44DC9A00E5D076 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CA649ACE1F44DC9A00E5D076 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA649AD11F44DC9A00E5D076 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,7 +71,7 @@
 				CA649ADC1F44F46B00E5D076 /* Model */,
 				CA649AD91F44DCA000E5D076 /* API */,
 				CA649AC71F44DC9A00E5D076 /* AppDelegate.swift */,
-				CA649AC91F44DC9A00E5D076 /* ViewController.swift */,
+				39A9B7851F454AAC0048A4DD /* PullToRefresh.swift */,
 				CA649ACB1F44DC9A00E5D076 /* Main.storyboard */,
 				CA649ACE1F44DC9A00E5D076 /* Assets.xcassets */,
 				CA649AD01F44DC9A00E5D076 /* LaunchScreen.storyboard */,
@@ -104,6 +108,8 @@
 		CA649AE21F45160300E5D076 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CA649AC91F44DC9A00E5D076 /* MainViewController.swift */,
+				39A9B7831F4543190048A4DD /* DetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -181,10 +187,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA649ACA1F44DC9A00E5D076 /* ViewController.swift in Sources */,
+				39A9B7841F4543190048A4DD /* DetailViewController.swift in Sources */,
+				CA649ACA1F44DC9A00E5D076 /* MainViewController.swift in Sources */,
 				CA649AE41F45161E00E5D076 /* CustomImageView.swift in Sources */,
 				CA649ADE1F44F47D00E5D076 /* Product.swift in Sources */,
 				CA649AE01F45067000E5D076 /* ProductTableViewCell.swift in Sources */,
+				39A9B7861F454AAC0048A4DD /* PullToRefresh.swift in Sources */,
 				CA649AC81F44DC9A00E5D076 /* AppDelegate.swift in Sources */,
 				CA649ADB1F44E17400E5D076 /* Client.swift in Sources */,
 			);
@@ -350,6 +358,7 @@
 				CA649AD81F44DC9A00E5D076 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

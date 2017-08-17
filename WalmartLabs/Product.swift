@@ -20,6 +20,7 @@ class Product {
     var reviewCount: Int?
     var inStock: Bool?
     
+    //create product object with json
     init(dictionary: NSDictionary) {
         
         productID = dictionary["name"] as? String
@@ -33,6 +34,7 @@ class Product {
         inStock = dictionary["reviewCount"] as? Bool
     }
     
+    //create array of products by passing in json array
     class func products(array: [NSDictionary]) -> [Product] {
         var products = [Product]()
         for dictionary in array {

@@ -16,7 +16,7 @@ class Client {
     
     static let sharedInstance = Client()
     
-    func getProducts(pageNumber: Int, pageSize: Int, completionHandler: @escaping ((_ json: AnyObject) -> Void)) {
+    func getProducts(pageNumber: Int, pageSize: Int, completionHandler: @escaping ((_ products: AnyObject) -> Void)) {
         let urlString = "\(baseURL)\(productList)\(apiKey)\(pageNumber)/\(pageSize)"
         let url = URL(string: urlString)
 

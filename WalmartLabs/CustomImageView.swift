@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+//image Cache
 let imageCache = NSCache<AnyObject, AnyObject>()
 
 class CustomImageView: UIImageView {
@@ -18,6 +19,8 @@ class CustomImageView: UIImageView {
         
         imageUrlString = urlString
         let url = URL(string: urlString)
+        
+        //if image is in cache load it otherwise download it
         if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage {
             self.image = imageFromCache
         }
@@ -31,6 +34,7 @@ class CustomImageView: UIImageView {
             
             DispatchQueue.main.async {
                 let imageToCache = UIImage(data: data!)
+                //if this is correct image for cell set it otherwise only cache it
                 if self.imageUrlString == urlString {
                     self.image = imageToCache
                 }

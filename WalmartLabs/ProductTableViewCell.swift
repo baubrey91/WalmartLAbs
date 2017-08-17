@@ -15,6 +15,7 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var productImage: CustomImageView!
     
+    //MVVM configuration of lables in ViewModel
     var product: Product? {
         didSet {
             productName.text = product?.productName
