@@ -37,13 +37,12 @@ class CustomImageView: UIImageView {
                 let imageToCache = UIImage(data: data!)
                 //if this is correct image for cell set it otherwise only cache it
                 if self.imageUrlString == urlString {
-                    self.alpha = 0.0
                     
+                    self.alpha = 0.0
                     self.image = imageToCache
                     UIView.animate(withDuration: 2.0, animations: { () -> Void in
                         self.alpha = 3.0
                     })
-                    //self.image = imageToCache
                 }
                 imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
             }

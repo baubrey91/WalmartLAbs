@@ -12,7 +12,7 @@ class Product {
     
     var productID: String?
     var productName: String?
-    var shortDesctription: String?
+    var shortDescription: String?
     var longDescription: String?
     var price: String?
     var productImage: String?
@@ -25,7 +25,7 @@ class Product {
         
         productID = dictionary["name"] as? String
         productName = dictionary["productName"] as? String
-        shortDesctription = dictionary["shortDesctription"] as? String
+        shortDescription = dictionary["shortDescription"] as? String
         longDescription = dictionary["longDescription"] as? String
         price = dictionary["price"] as? String
         productImage = dictionary["productImage"] as? String

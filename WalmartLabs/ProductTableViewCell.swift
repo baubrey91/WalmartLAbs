@@ -19,10 +19,13 @@ class ProductTableViewCell: UITableViewCell {
     var product: Product? {
         didSet {
             productName.text = product?.productName
-            productDescription.text = product?.shortDesctription
+            
+            if let htmlString = product?.shortDescription {
+                let attributed = try! NSAttributedString(data: htmlString.data(using: .unicode)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+                productDescription.text = attributed.string
+            }
             price.text = product?.price
             productImage.loadImage(urlString: (product?.productImage)!)
         }
     }
 }
-
