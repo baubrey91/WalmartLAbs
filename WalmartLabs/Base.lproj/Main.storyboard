@@ -111,7 +111,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Wn5-tV-AA6">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Tsh-7h-Ylq">
                                     <size key="itemSize" width="375" height="600"/>
@@ -121,15 +121,15 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductCollectionViewCell" id="6V0-6i-YEa" customClass="ProductCollectionViewCell" customModule="WalmartLabs" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1.5" width="375" height="600"/>
+                                        <rect key="frame" x="0.0" y="-30.5" width="375" height="600"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVe-6h-cbU" customClass="CustomImageView" customModule="WalmartLabs" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVe-6h-cbU" customClass="CustomImageView" customModule="WalmartLabs" customModuleProvider="target">
                                                     <rect key="frame" x="67" y="133" width="240" height="223"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGK-ep-j2M">
                                                     <rect key="frame" x="166" y="20" width="42" height="21"/>
@@ -163,7 +163,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Wn5-tV-AA6" firstAttribute="leading" secondItem="sbM-3q-1Rx" secondAttribute="leading" id="bdm-Xa-Mrd"/>
-                            <constraint firstItem="Wn5-tV-AA6" firstAttribute="top" secondItem="sbM-3q-1Rx" secondAttribute="top" id="lYR-Xn-qdA"/>
+                            <constraint firstItem="Wn5-tV-AA6" firstAttribute="top" secondItem="sbM-3q-1Rx" secondAttribute="top" constant="64" id="lYR-Xn-qdA"/>
                             <constraint firstAttribute="trailing" secondItem="Wn5-tV-AA6" secondAttribute="trailing" id="wy7-Ci-fM1"/>
                             <constraint firstItem="n3W-iD-365" firstAttribute="top" secondItem="Wn5-tV-AA6" secondAttribute="bottom" id="y4K-ob-Emw"/>
                         </constraints>
