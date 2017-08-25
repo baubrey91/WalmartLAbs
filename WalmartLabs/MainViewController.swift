@@ -27,6 +27,7 @@ class MainViewController: UIViewController {
     let pageSize = 10
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,11 +51,13 @@ class MainViewController: UIViewController {
         refreshControl?.addTarget(self, action: #selector(MainViewController.refresh),
                                   for: UIControlEvents.valueChanged)
         tableView.addSubview(refreshControl)
-        
+        activitySpinner.hidesWhenStopped = true
+        activitySpinner.startAnimating()
         Client.sharedInstance.getProducts(pageNumber: pageOffSet, pageSize: pageSize, completionHandler: {
             products in DispatchQueue.main.sync {
                 self.products = products as! [Product]
                 self.tableView.reloadData()
+                self.activitySpinner.stopAnimating()
             }
         })
     }
@@ -75,6 +78,7 @@ class MainViewController: UIViewController {
 //            }
 //        })
 //    }
+        
         // I set up a timer instead of getting data to showcase the animation, above code will refresh data
         let delayInSeconds = 3.0
         let popTime = DispatchTime.now() + Double(Int64(delayInSeconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)

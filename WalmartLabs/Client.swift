@@ -35,42 +35,4 @@ class Client {
         })
         task.resume()
     }
-    
-    
-    /*func getProducts(pgNumber: Int, pgSize: Int) {
-        let url = URL(string:("\(baseURL)\(productList)\(apiKey)\(pgNumber)\(pgSize)"))
-
-        
-        let request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
-        let session = URLSession(configuration: URLSessionConfiguration.default,
-                                 delegate: nil,
-                                 delegateQueue: OperationQueue.main
-        )
-        
-        
-        
-        let task: URLSessionDataTask = session.dataTask(with: request,completionHandler: {(dataOrNil, response, error) in
-            if error != nil {
-                print(error ?? "unkown")
-            }
-            //start spinner
-            if let data = dataOrNil {
-                print(data)
-                if let responseDictionary = try! JSONSerialization.jsonObject(with: data, options: .allowFragments) as? NSObject {
-                    //let payLoad = responseDictionary["products"] as? [NSDictionary]{
-                    //print(payLoad)
-                    /*for m in payLoad {
-                        let mm = Movie(dict: m)
-                        self.moviesArray.append(mm)
-                    }*/
-                    //stop spinner
-//                    self.collectionView.reloadData()
-//                    self.filteredMoviesArray = self.moviesArray
-//                    self.tableView.reloadData()
-                }
-            }
-        });
-        task.resume()
-    }*/
-    
 }
