@@ -10,17 +10,22 @@ import UIKit
 
 class ProductCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var productName: UILabel!
+    @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var productImage: CustomImageView!
-    @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var shortDescriptionLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     
     //MVVM configuration of lables in ViewModel
     var product: Product? {
         didSet {
-            productName.text = product?.productName
+            productNameLabel.text = product?.productName
             //productDescription.text = product?.shortDesctription
-            price.text = product?.price
+            priceLabel.text = product?.price
             productImage.loadImage(urlString: (product?.productImage)!)
+            if let htmlString = product?.shortDescription {
+                let attributed = try! NSAttributedString(data: htmlString.data(using: .unicode)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+                shortDescriptionLabel.text = attributed.string
+            }
         }
     }
     

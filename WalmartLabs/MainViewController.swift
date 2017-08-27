@@ -10,7 +10,19 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var products = [Product]()
+    var filteredProducts = [Product]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
+    var products = [Product]() {
+        didSet {
+            filteredProducts = products
+        }
+    }
+    
+    var searchBar: UISearchBar!
     
     //pull to refresh set up
     var refreshControl: UIRefreshControl!
@@ -32,6 +44,37 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120
+        
+        configureSeachBar()
+        configureTableviewReloads()
+        activitySpinner.hidesWhenStopped = true
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(getProducts(_:)),
+                                               name: NSNotification.Name.UIApplicationDidBecomeActive,
+                                               object: nil)
+        getProducts(false)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! DetailViewController
+        let indexPath = tableView.indexPath(for: sender as! ProductTableViewCell)!
+        destinationVC.products = filteredProducts
+        destinationVC.productIndex = indexPath.row
+    }
+    
+    fileprivate func configureSeachBar() {
+        // Initialize the UISearchBar
+        searchBar = UISearchBar()
+        searchBar.delegate = self
+        
+        // Add SearchBar to the NavigationBar
+        searchBar.sizeToFit()
+        navigationItem.titleView = searchBar
+    }
+    
+    fileprivate func configureTableviewReloads() {
         //set up infinte scroll
         let frame = CGRect(x: 0,
                            y: tableView.contentSize.height,
@@ -51,33 +94,30 @@ class MainViewController: UIViewController {
         refreshControl?.addTarget(self, action: #selector(MainViewController.refresh),
                                   for: UIControlEvents.valueChanged)
         tableView.addSubview(refreshControl)
-        activitySpinner.hidesWhenStopped = true
-        activitySpinner.startAnimating()
+    }
+    
+    func getProducts(_ append: Bool) {
+        if append {
+            pageOffSet += 1
+        } else {
+            pageOffSet = 1
+            activitySpinner.startAnimating()
+        }
+        
         Client.sharedInstance.getProducts(pageNumber: pageOffSet, pageSize: pageSize, completionHandler: {
             products in DispatchQueue.main.sync {
+                
+                self.isMoreDataLoading = false
+                self.loadingMoreView!.stopAnimating()
+                
                 self.products = products as! [Product]
-                self.tableView.reloadData()
                 self.activitySpinner.stopAnimating()
             }
         })
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! DetailViewController
-        let indexPath = tableView.indexPath(for: sender as! ProductTableViewCell)!
-        destinationVC.products = products
-        destinationVC.productIndex = indexPath.row
-    }
-    
     func refresh() {
-//        Client.sharedInstance.getProducts(pageNumber: pageOffSet, pageSize: pageSize, completionHandler: {
-//            products in DispatchQueue.main.sync {
-//                self.products = products as! [Product]
-//                self.tableView.reloadData()
-//                self.refreshControl!.endRefreshing()
-//            }
-//        })
-//    }
+        //getProducts()
         
         // I set up a timer instead of getting data to showcase the animation, above code will refresh data
         let delayInSeconds = 3.0
@@ -92,12 +132,12 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return products.count
+        return filteredProducts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell") as! ProductTableViewCell
-        cell.product = products[indexPath.row]
+        cell.product = filteredProducts[indexPath.row]
         return cell
     }
     
@@ -110,7 +150,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             // Calculate the position of one screen length before the bottom of the results
             let scrollViewContentHeight = tableView.contentSize.height
             let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
-            
             if scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging {
                 isMoreDataLoading = true
                 
@@ -121,23 +160,28 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 loadingMoreView?.frame = frame
                 loadingMoreView!.startAnimating()
                 
-                loadMoreData()
+                getProducts(true)
             }
         }
     }
-    
-    func loadMoreData() {
-        //load next page when scrolling to bottom
-        pageOffSet += 1
-        
-        Client.sharedInstance.getProducts(pageNumber: pageOffSet, pageSize: pageSize, completionHandler: {
-            products in DispatchQueue.main.sync {
-                self.products += products as! [Product]
-                self.isMoreDataLoading = false
-                self.loadingMoreView!.stopAnimating()
-                self.tableView.reloadData()
-            }
-        })
-    }
 }
 
+//MARK:- SearchBar
+extension MainViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.characters.count > 0 {
+            filteredProducts = products.filter { (product: Product) -> Bool in
+                return (product.productName?.contains(searchText))!
+            }
+        } else {
+            filteredProducts = products
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        filteredProducts = products
+        searchBar.resignFirstResponder()
+    }
+}

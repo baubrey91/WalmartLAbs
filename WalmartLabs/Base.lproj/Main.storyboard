@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,54 +22,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="170" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g9k-cg-4bk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="122" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g9k-cg-4bk">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductTableViewCell" rowHeight="170" id="IAu-4K-bAp" customClass="ProductTableViewCell" customModule="WalmartLabs" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="170"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ProductTableViewCell" rowHeight="122" id="IAu-4K-bAp" customClass="ProductTableViewCell" customModule="WalmartLabs" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IAu-4K-bAp" id="Fh0-Zg-tU0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="121.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="utZ-fJ-hMk" customClass="CustomImageView" customModule="WalmartLabs" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="35" width="171" height="126"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="utZ-fJ-hMk" customClass="CustomImageView" customModule="WalmartLabs" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="8" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="PSi-b6-XpJ"/>
+                                                        <constraint firstAttribute="height" constant="100" id="UiR-fT-gcc"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="productName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oej-bp-sts">
-                                                    <rect key="frame" x="8" y="0.0" width="359" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzk-pk-ia8">
+                                                    <rect key="frame" x="116" y="37" width="251" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="shortDescription" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5y-1e-bqZ">
-                                                    <rect key="frame" x="187" y="29" width="180" height="104"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFP-dT-BDU">
+                                                    <rect key="frame" x="116" y="66" width="49" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzk-pk-ia8">
-                                                    <rect key="frame" x="187" y="141" width="180" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="productName" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oej-bp-sts">
+                                                    <rect key="frame" x="116" y="8" width="251" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Oej-bp-sts" firstAttribute="top" secondItem="Fh0-Zg-tU0" secondAttribute="top" id="35r-nv-xhC"/>
-                                                <constraint firstItem="Oej-bp-sts" firstAttribute="leading" secondItem="Fh0-Zg-tU0" secondAttribute="leading" constant="8" id="Uql-la-gZg"/>
-                                                <constraint firstAttribute="trailing" secondItem="Oej-bp-sts" secondAttribute="trailing" constant="8" id="vP3-ra-8lT"/>
+                                                <constraint firstItem="utZ-fJ-hMk" firstAttribute="top" secondItem="Fh0-Zg-tU0" secondAttribute="topMargin" id="3cO-3c-S5I"/>
+                                                <constraint firstItem="XFP-dT-BDU" firstAttribute="top" secondItem="Tzk-pk-ia8" secondAttribute="bottom" constant="8" id="Bi6-z8-t7S"/>
+                                                <constraint firstItem="Tzk-pk-ia8" firstAttribute="top" secondItem="Oej-bp-sts" secondAttribute="bottom" constant="8" id="P6z-Sc-zeX"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="XFP-dT-BDU" secondAttribute="bottom" constant="25" id="RqU-HT-ggP"/>
+                                                <constraint firstItem="Tzk-pk-ia8" firstAttribute="leading" secondItem="Oej-bp-sts" secondAttribute="leading" id="UEW-j2-fhI"/>
+                                                <constraint firstItem="utZ-fJ-hMk" firstAttribute="leading" secondItem="Fh0-Zg-tU0" secondAttribute="leadingMargin" id="duB-TX-59Z"/>
+                                                <constraint firstItem="Oej-bp-sts" firstAttribute="trailing" secondItem="Fh0-Zg-tU0" secondAttribute="trailingMargin" id="hBD-yC-Mv0"/>
+                                                <constraint firstItem="Oej-bp-sts" firstAttribute="leading" secondItem="utZ-fJ-hMk" secondAttribute="trailing" constant="8" id="hpK-3K-V4n"/>
+                                                <constraint firstItem="Tzk-pk-ia8" firstAttribute="trailing" secondItem="Fh0-Zg-tU0" secondAttribute="trailingMargin" id="nsY-FC-Sfs"/>
+                                                <constraint firstItem="XFP-dT-BDU" firstAttribute="leading" secondItem="Oej-bp-sts" secondAttribute="leading" id="obT-s7-TbC"/>
+                                                <constraint firstItem="Oej-bp-sts" firstAttribute="top" secondItem="Fh0-Zg-tU0" secondAttribute="topMargin" id="y2S-B5-FGH"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="utZ-fJ-hMk" secondAttribute="bottom" id="yBP-WB-fKb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="price" destination="Tzk-pk-ia8" id="CEK-Jo-gKA"/>
-                                            <outlet property="productDescription" destination="g5y-1e-bqZ" id="iZa-Cc-Nkv"/>
+                                            <outlet property="priceLabel" destination="Tzk-pk-ia8" id="dEq-s5-HQV"/>
                                             <outlet property="productImage" destination="utZ-fJ-hMk" id="HWM-zH-w0F"/>
-                                            <outlet property="productName" destination="Oej-bp-sts" id="nwI-bD-Bj7"/>
+                                            <outlet property="productNameLabel" destination="Oej-bp-sts" id="HEv-UF-cpG"/>
+                                            <outlet property="ratingLabel" destination="XFP-dT-BDU" id="35z-tZ-rIt"/>
                                             <segue destination="Jhj-o7-i6g" kind="show" id="REZ-wV-sHc"/>
                                         </connections>
                                     </tableViewCell>
@@ -131,36 +142,44 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductCollectionViewCell" id="6V0-6i-YEa" customClass="ProductCollectionViewCell" customModule="WalmartLabs" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-30" width="375" height="600"/>
+                                        <rect key="frame" x="0.0" y="-30.5" width="375" height="600"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGK-ep-j2M">
+                                                    <rect key="frame" x="20" y="20" width="335" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aR3-C0-j40">
+                                                    <rect key="frame" x="20" y="526" width="335" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="shortDescription" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5y-1e-bqZ">
+                                                    <rect key="frame" x="20" y="308" width="335" height="210"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVe-6h-cbU" customClass="CustomImageView" customModule="WalmartLabs" customModuleProvider="target">
-                                                    <rect key="frame" x="67" y="133" width="240" height="223"/>
+                                                    <rect key="frame" x="67" y="55" width="240" height="223"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGK-ep-j2M">
-                                                    <rect key="frame" x="166" y="20" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aR3-C0-j40">
-                                                    <rect key="frame" x="166" y="448" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </view>
                                         <connections>
-                                            <outlet property="price" destination="aR3-C0-j40" id="gWn-YS-Agl"/>
+                                            <outlet property="priceLabel" destination="aR3-C0-j40" id="Pl5-CO-ZLi"/>
                                             <outlet property="productImage" destination="XVe-6h-cbU" id="WGL-vb-AGJ"/>
-                                            <outlet property="productName" destination="IGK-ep-j2M" id="9bM-wM-Mvw"/>
+                                            <outlet property="productNameLabel" destination="IGK-ep-j2M" id="1a3-fd-eAs"/>
+                                            <outlet property="shortDescriptionLabel" destination="g5y-1e-bqZ" id="Amt-0t-7LB"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

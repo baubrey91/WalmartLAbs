@@ -10,22 +10,32 @@ import UIKit
 
 class ProductTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var productName: UILabel!
-    @IBOutlet weak var productDescription: UILabel!
-    @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var productImage: CustomImageView!
     
     //MVVM configuration of lables in ViewModel
     var product: Product? {
         didSet {
-            productName.text = product?.productName
-            
-            if let htmlString = product?.shortDescription {
-                let attributed = try! NSAttributedString(data: htmlString.data(using: .unicode)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
-                productDescription.text = attributed.string
+            productNameLabel.text = product?.productName
+            if let rating = product?.reviewRating, rating > 0 {
+                ratingLabel.text = "Rating: \(rating)"
+            } else {
+                ratingLabel.text = "No Ratings"
             }
-            price.text = product?.price
+            priceLabel.text = product?.price
             productImage.loadImage(urlString: (product?.productImage)!)
         }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        productNameLabel.preferredMaxLayoutWidth = productNameLabel.frame.size.width
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        productNameLabel.preferredMaxLayoutWidth = productNameLabel.frame.size.width
     }
 }
