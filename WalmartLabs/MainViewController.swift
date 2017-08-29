@@ -61,7 +61,7 @@ class MainViewController: UIViewController {
         let destinationVC = segue.destination as! DetailViewController
         let indexPath = tableView.indexPath(for: sender as! ProductTableViewCell)!
         destinationVC.products = filteredProducts
-        destinationVC.productIndex = indexPath.row
+        destinationVC.productIndex = indexPath
     }
     
     fileprivate func configureSeachBar() {

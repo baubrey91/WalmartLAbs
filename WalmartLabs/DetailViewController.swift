@@ -11,7 +11,7 @@ import UIKit
 class DetailViewController: UIViewController {
     
     var products = [Product]()
-    var productIndex: Int!
+    var productIndex: IndexPath!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -19,6 +19,16 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         //product = products[productIndex]
     }
+    
+    override func viewDidLayoutSubviews() {
+        self.collectionView.scrollToItem(at: productIndex, at: .right, animated: false)
+    }
+    
+    @IBAction func flipOver(_ sender: Any) {
+        
+        
+    }
+    
 }
 
 //MARK:- CollectionView
@@ -39,6 +49,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as! ProductCollectionViewCell
+        self.title = products[indexPath.row].productName
         cell.product = products[indexPath.row]
         
         return cell

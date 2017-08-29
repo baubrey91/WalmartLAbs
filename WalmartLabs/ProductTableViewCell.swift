@@ -21,8 +21,11 @@ class ProductTableViewCell: UITableViewCell {
             productNameLabel.text = product?.productName
             if let rating = product?.reviewRating, rating > 0 {
                 ratingLabel.text = "Rating: \(rating)"
+                ratingLabel.textColor = getRatingColor(score: rating)
+                
             } else {
                 ratingLabel.text = "No Ratings"
+                ratingLabel.textColor = UIColor.black
             }
             priceLabel.text = product?.price
             productImage.loadImage(urlString: (product?.productImage)!)
@@ -37,5 +40,16 @@ class ProductTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         productNameLabel.preferredMaxLayoutWidth = productNameLabel.frame.size.width
+    }
+    
+    fileprivate func getRatingColor(score: Double) -> UIColor {
+        switch score {
+        case 0..<2:
+            return UIColor.red
+        case 2..<4:
+            return UIColor.yellow
+        default:
+            return UIColor.green
+        }
     }
 }
