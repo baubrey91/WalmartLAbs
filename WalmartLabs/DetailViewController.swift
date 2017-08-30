@@ -23,12 +23,6 @@ class DetailViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         self.collectionView.scrollToItem(at: productIndex, at: .right, animated: false)
     }
-    
-    @IBAction func flipOver(_ sender: Any) {
-        
-        
-    }
-    
 }
 
 //MARK:- CollectionView

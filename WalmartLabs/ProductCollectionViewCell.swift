@@ -14,7 +14,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var shortDescriptionLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
-    //MVVM configuration of lables in ViewModel
+    //MVVM configuration of labels in ViewModel
     var product: Product? {
         didSet {
             priceLabel.text = product?.price
@@ -22,6 +22,8 @@ class ProductCollectionViewCell: UICollectionViewCell {
             if let htmlString = product?.shortDescription {
                 let attributed = try! NSAttributedString(data: htmlString.data(using: .unicode)!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
                 shortDescriptionLabel.text = attributed.string
+            } else {
+                shortDescriptionLabel.text = "No description at this time"
             }
         }
     }
