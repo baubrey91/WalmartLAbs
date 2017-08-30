@@ -21,7 +21,7 @@ class Product {
     var inStock: Bool?
     
     //create product object with json
-    init(dictionary: NSDictionary) {
+    init(dictionary: payload) {
         
         productID = dictionary["name"] as? String
         productName = dictionary["productName"] as? String
@@ -35,7 +35,7 @@ class Product {
     }
     
     //create array of products by passing in json array
-    class func products(array: [NSDictionary]) -> [Product] {
+    class func products(array: [payload]) -> [Product] {
         var products = [Product]()
         for dictionary in array {
             let product = Product(dictionary: dictionary)

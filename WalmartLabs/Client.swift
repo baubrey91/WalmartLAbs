@@ -26,8 +26,8 @@ class Client {
                 completionHandler(error as AnyObject)
             }
             if data != nil {
-                let jsonData = (try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)) as? [String: Any]
-                if let dictionaries = jsonData?["products"] as? [NSDictionary] {
+                let jsonData = (try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)) as? payload
+                if let dictionaries = jsonData?["products"] as? [payload] {
                     completionHandler(Product.products(array: dictionaries) as AnyObject)
                 }
             }
