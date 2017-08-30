@@ -31,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IAu-4K-bAp" id="Fh0-Zg-tU0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="121.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="utZ-fJ-hMk" customClass="CustomImageView" customModule="WalmartLabs" customModuleProvider="target">
@@ -173,13 +173,34 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVe-6h-cbU" customClass="CustomImageView" customModule="WalmartLabs" customModuleProvider="target">
                                                     <rect key="frame" x="67" y="55" width="240" height="216"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </imageView>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="748" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVe-6h-cbU" customClass="CustomImageView" customModule="WalmartLabs" customModuleProvider="target">
+                                                            <rect key="frame" x="20" y="8" width="335" height="246"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aR3-C0-j40">
+                                                            <rect key="frame" x="20" y="532" width="335" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" fixedFrame="YES" text="shortDescription" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5y-1e-bqZ">
+                                                            <rect key="frame" x="20" y="262" width="335" height="229"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="priceLabel" destination="aR3-C0-j40" id="Pl5-CO-ZLi"/>
                                             <outlet property="productImage" destination="XVe-6h-cbU" id="WGL-vb-AGJ"/>
-                                            <outlet property="productNameLabel" destination="IGK-ep-j2M" id="1a3-fd-eAs"/>
                                             <outlet property="shortDescriptionLabel" destination="g5y-1e-bqZ" id="Amt-0t-7LB"/>
                                         </connections>
                                     </collectionViewCell>

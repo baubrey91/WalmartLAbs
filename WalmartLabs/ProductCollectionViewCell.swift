@@ -10,7 +10,6 @@ import UIKit
 
 class ProductCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var productImage: CustomImageView!
     @IBOutlet weak var shortDescriptionLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -18,8 +17,6 @@ class ProductCollectionViewCell: UICollectionViewCell {
     //MVVM configuration of lables in ViewModel
     var product: Product? {
         didSet {
-            productNameLabel.text = product?.productName
-            //productDescription.text = product?.shortDesctription
             priceLabel.text = product?.price
             productImage.loadImage(urlString: (product?.productImage)!)
             if let htmlString = product?.shortDescription {
@@ -28,5 +25,4 @@ class ProductCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-    
 }
