@@ -10,13 +10,16 @@ import UIKit
 
 class ProductCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var inStockImage: UIImageView!
     @IBOutlet weak var productImage: CustomImageView!
     @IBOutlet weak var shortDescriptionLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
     //MVVM configuration of labels in ViewModel
     var product: Product? {
         didSet {
+            nameLabel.text = product?.productName
             priceLabel.text = product?.price
             productImage.loadImage(urlString: (product?.productImage)!)
             if let htmlString = product?.shortDescription {
@@ -25,6 +28,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
             } else {
                 shortDescriptionLabel.text = "No description at this time"
             }
+            inStockImage.image = (product?.inStock)! ? #imageLiteral(resourceName: "thumbs_up"): #imageLiteral(resourceName: "thumbs_down")
         }
     }
 }

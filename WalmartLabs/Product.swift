@@ -31,7 +31,8 @@ class Product {
         productImage = dictionary["productImage"] as? String
         reviewRating = dictionary["reviewRating"] as? Double
         reviewCount = dictionary["reviewCount"] as? Int
-        inStock = dictionary["reviewCount"] as? Bool
+        // safe to assume that if information is not there it is not in stock
+        inStock = dictionary["reviewCount"] as? Bool ?? false
     }
     
     //create array of products by passing in json array

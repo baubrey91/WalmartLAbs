@@ -36,7 +36,7 @@ class MainViewController: UIViewController {
     var loadingMoreView: InfiniteScrollActivityView?
     
     var pageOffSet = 1
-    let pageSize = 10
+    var pageSize = 10
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
@@ -81,6 +81,7 @@ class MainViewController: UIViewController {
                            width: tableView.bounds.size.width,
                            height: InfiniteScrollActivityView.defaultHeight)
         loadingMoreView = InfiniteScrollActivityView(frame: frame)
+        loadingMoreView?.backgroundColor = UIColor.clear
         loadingMoreView!.isHidden = true
         tableView.addSubview(loadingMoreView!)
         
@@ -98,18 +99,18 @@ class MainViewController: UIViewController {
     
     func getProducts(_ append: Bool) {
         if append {
-            pageOffSet += 1
+            pageSize += 10
         } else {
-            pageOffSet = 1
+            pageSize = 10
             activitySpinner.startAnimating()
         }
         
         Client.sharedInstance.getProducts(pageNumber: pageOffSet, pageSize: pageSize, completionHandler: {
             products in DispatchQueue.main.sync {
-                
-                self.isMoreDataLoading = false
-                self.loadingMoreView!.stopAnimating()
-                
+                if append {
+                    self.isMoreDataLoading = false
+                    self.loadingMoreView!.stopAnimating()
+                }
                 self.products = products as! [Product]
                 self.activitySpinner.stopAnimating()
             }

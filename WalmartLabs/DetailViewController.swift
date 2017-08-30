@@ -21,7 +21,7 @@ class DetailViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        self.collectionView.scrollToItem(at: productIndex, at: .right, animated: false)
+        self.collectionView.scrollToItem(at: productIndex, at: .centeredVertically, animated: false)
     }
 }
 
@@ -43,7 +43,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCollectionViewCell", for: indexPath) as! ProductCollectionViewCell
-        self.title = products[indexPath.row].productName
+        //self.title = products[indexPath.row].productName
         cell.product = products[indexPath.row]
         
         return cell
