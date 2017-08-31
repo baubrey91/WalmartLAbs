@@ -1,11 +1,3 @@
-//
-//  DestinationViewController.swift
-//  WalmartLabs
-//
-//  Created by Brandon Aubrey on 8/16/17.
-//  Copyright © 2017 BrandonAubrey. All rights reserved.
-//
-
 import UIKit
 
 class DetailViewController: UIViewController {
@@ -47,5 +39,10 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.product = products[indexPath.row]
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! ProductCollectionViewCell
+        cell.flipOver()
     }
 }

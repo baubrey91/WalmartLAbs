@@ -1,11 +1,3 @@
-//
-//  ProductTableViewCell.swift
-//  WalmartLabs
-//
-//  Created by Brandon on 8/16/17.
-//  Copyright © 2017 BrandonAubrey. All rights reserved.
-//
-
 import UIKit
 
 class ProductTableViewCell: UITableViewCell {
@@ -42,6 +34,7 @@ class ProductTableViewCell: UITableViewCell {
         productNameLabel.preferredMaxLayoutWidth = productNameLabel.frame.size.width
     }
     
+    //helper functoin to set color of rating
     fileprivate func getRatingColor(score: Double) -> UIColor {
         switch score {
         case 0..<2:

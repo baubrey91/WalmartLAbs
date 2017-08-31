@@ -1,24 +1,16 @@
-//
-//  Product.swift
-//  WalmartLabs
-//
-//  Created by Brandon on 8/16/17.
-//  Copyright © 2017 BrandonAubrey. All rights reserved.
-//
-
 import Foundation
 
 class Product {
     
-    var productID: String?
-    var productName: String?
-    var shortDescription: String?
-    var longDescription: String?
-    var price: String?
-    var productImage: String?
-    var reviewRating: Double?
-    var reviewCount: Int?
-    var inStock: Bool?
+    var productID: String!
+    var productName: String!
+    var shortDescription: String!
+    var longDescription: String!
+    var price: String!
+    var productImage: String!
+    var reviewRating: Double!
+    var reviewCount: Int!
+    var inStock: Bool!
     
     //create product object with json
     init(dictionary: payload) {
@@ -44,6 +36,4 @@ class Product {
         }
         return products
     }
-    
-
 }

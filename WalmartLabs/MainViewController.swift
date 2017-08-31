@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  WalmartLabs
-//
-//  Created by Brandon on 8/16/17.
-//  Copyright © 2017 BrandonAubrey. All rights reserved.
-//
-
 import UIKit
 
 class MainViewController: UIViewController {
@@ -22,7 +14,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    var searchBar: UISearchBar!
+    fileprivate var searchBar: UISearchBar!
     
     //pull to refresh set up
     var refreshControl: UIRefreshControl!
@@ -35,8 +27,8 @@ class MainViewController: UIViewController {
     var isMoreDataLoading = false
     var loadingMoreView: InfiniteScrollActivityView?
     
-    var pageOffSet = 1
-    var pageSize = 10
+    fileprivate var pageOffSet = 1
+    fileprivate var pageSize = 10
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
@@ -51,10 +43,10 @@ class MainViewController: UIViewController {
         configureTableviewReloads()
         activitySpinner.hidesWhenStopped = true
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(getProducts(_:)),
+                                               selector: #selector(loadProducts),
                                                name: NSNotification.Name.UIApplicationDidBecomeActive,
                                                object: nil)
-        getProducts(false)
+        loadProducts()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -97,28 +89,34 @@ class MainViewController: UIViewController {
         tableView.addSubview(refreshControl)
     }
     
-    func getProducts(_ append: Bool) {
-        if append {
-            pageSize += 10
-        } else {
-            pageSize = 10
-            activitySpinner.startAnimating()
-        }
+    func loadProducts() {
+        pageSize = 10
+        activitySpinner.startAnimating()
         
         Client.sharedInstance.getProducts(pageNumber: pageOffSet, pageSize: pageSize, completionHandler: {
             products in DispatchQueue.main.sync {
-                if append {
-                    self.isMoreDataLoading = false
-                    self.loadingMoreView!.stopAnimating()
-                }
                 self.products = products as! [Product]
                 self.activitySpinner.stopAnimating()
             }
         })
     }
     
+    fileprivate func addProducts() {
+        pageSize += 10
+        
+        Client.sharedInstance.getProducts(pageNumber: pageOffSet, pageSize: pageSize, completionHandler: {
+            products in DispatchQueue.main.sync {
+                self.isMoreDataLoading = false
+                self.loadingMoreView!.stopAnimating()
+                self.products = products as! [Product]
+                self.activitySpinner.stopAnimating()
+            }
+        })
+    }
+
+    
     func refresh() {
-        //getProducts()
+        //getProducts(false)
         
         // I set up a timer instead of getting data to showcase the animation, above code will refresh data
         let delayInSeconds = 3.0
@@ -161,7 +159,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 loadingMoreView?.frame = frame
                 loadingMoreView!.startAnimating()
                 
-                getProducts(true)
+                addProducts()
             }
         }
     }

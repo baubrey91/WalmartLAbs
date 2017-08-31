@@ -1,11 +1,3 @@
-//
-//  PullToRefresh.swift
-//  WalmartLabs
-//
-//  Created by Brandon Aubrey on 8/16/17.
-//  Copyright © 2017 BrandonAubrey. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
