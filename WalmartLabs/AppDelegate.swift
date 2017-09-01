@@ -1,6 +1,7 @@
 import UIKit
 
 typealias payload = [String: Any]
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

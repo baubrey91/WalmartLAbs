@@ -27,9 +27,9 @@ class CustomImageView: UIImageView {
             
             DispatchQueue.main.async {
                 let imageToCache = UIImage(data: data!)
+                
                 //if this is correct image for cell set it otherwise only cache it
                 if self.imageUrlString == urlString {
-                    
                     self.alpha = 0.0
                     self.image = imageToCache
                     UIView.animate(withDuration: 2.0, animations: { () -> Void in

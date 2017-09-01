@@ -33,6 +33,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activitySpinner: UIActivityIndicatorView!
     
+    //MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,6 +57,7 @@ class MainViewController: UIViewController {
         destinationVC.productIndex = indexPath
     }
     
+    //MARK:- Configuration
     fileprivate func configureSeachBar() {
         // Initialize the UISearchBar
         searchBar = UISearchBar()
@@ -89,21 +91,43 @@ class MainViewController: UIViewController {
         tableView.addSubview(refreshControl)
     }
     
+    //MARK:- Functions
     func loadProducts() {
-        pageSize = 10
-        activitySpinner.startAnimating()
+        if Reachability.isConnectedToNetwork() {
+            pageSize = 10
+            activitySpinner.startAnimating()
+            
+            //Check for internet connection and send alert if no connection
+            Client.sharedInstance.getProducts(pageNumber: pageOffSet, pageSize: pageSize, completionHandler: {
+                products in DispatchQueue.main.sync {
+                    self.products = products as! [Product]
+                    self.activitySpinner.stopAnimating()
+                }
+            })
+        } else {
+            noInternetAlert()
+        }
+    }
+    
+    fileprivate func noInternetAlert() {
+        let alert = UIAlertController(title: "Uh Oh",
+                                      message: "You are not connected to the internet",
+                                      preferredStyle: .alert)
         
-        Client.sharedInstance.getProducts(pageNumber: pageOffSet, pageSize: pageSize, completionHandler: {
-            products in DispatchQueue.main.sync {
-                self.products = products as! [Product]
-                self.activitySpinner.stopAnimating()
-            }
+        let action = UIAlertAction(title: "OK",
+                                   style: .default,
+                                   handler: { (alert) in
+                                    
         })
+        alert.addAction(action)
+        self.present(alert,
+                     animated: true,
+                     completion: nil)
+        
     }
     
     fileprivate func addProducts() {
         pageSize += 10
-        
         Client.sharedInstance.getProducts(pageNumber: pageOffSet, pageSize: pageSize, completionHandler: {
             products in DispatchQueue.main.sync {
                 self.isMoreDataLoading = false
@@ -113,10 +137,9 @@ class MainViewController: UIViewController {
             }
         })
     }
-
     
     func refresh() {
-        //getProducts(false)
+        //getProducts()
         
         // I set up a timer instead of getting data to showcase the animation, above code will refresh data
         let delayInSeconds = 3.0
@@ -171,16 +194,11 @@ extension MainViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.characters.count > 0 {
             filteredProducts = products.filter { (product: Product) -> Bool in
-                return (product.productName?.contains(searchText))!
+                return (product.productName?.lowercased().contains(searchText.lowercased()))!
             }
         } else {
             filteredProducts = products
+            searchBar.resignFirstResponder()
         }
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        filteredProducts = products
-        searchBar.resignFirstResponder()
     }
 }

@@ -7,11 +7,13 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    //MARK:- View Life Cycle
+    //left template code incase needed in future
     override func viewDidLoad() {
         super.viewDidLoad()
         //product = products[productIndex]
     }
-    
+// scroll to the correct item upon entering screen
     override func viewDidLayoutSubviews() {
         self.collectionView.scrollToItem(at: productIndex, at: .centeredVertically, animated: false)
     }
@@ -23,7 +25,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+        //need to rescale frames to allow paging to work properly
         let width = self.view.frame.width
         let height = self.view.frame.height
         return CGSize(width: width, height: height)

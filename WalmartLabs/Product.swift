@@ -2,6 +2,7 @@ import Foundation
 
 class Product {
     
+    //If anything is known to come back nil from DB I would make them optional
     var productID: String!
     var productName: String!
     var shortDescription: String!
@@ -22,7 +23,7 @@ class Product {
         price = dictionary["price"] as? String
         productImage = dictionary["productImage"] as? String
         reviewRating = dictionary["reviewRating"] as? Double
-        reviewCount = dictionary["reviewCount"] as? Int
+        reviewCount = dictionary["reviewCount"] as? Int ?? 0
         // safe to assume that if information is not there it is not in stock
         inStock = dictionary["reviewCount"] as? Bool ?? false
     }
