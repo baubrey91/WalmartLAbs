@@ -112,7 +112,7 @@
 				CAC75CF81F5A1C7A00989037 /* Reachability.swift */,
 				CA649ADA1F44E17400E5D076 /* Client.swift */,
 			);
-			name = API;
+			path = API;
 			sourceTree = "<group>";
 		};
 		CA649ADC1F44F46B00E5D076 /* Model */ = {
@@ -120,7 +120,7 @@
 			children = (
 				CA649ADD1F44F47D00E5D076 /* Product.swift */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CA649AE11F4515FD00E5D076 /* View */ = {
@@ -130,7 +130,7 @@
 				39A9B7871F455F0A0048A4DD /* ProductCollectionViewCell.swift */,
 				CA649ADF1F45067000E5D076 /* ProductTableViewCell.swift */,
 			);
-			name = View;
+			path = View;
 			sourceTree = "<group>";
 		};
 		CA649AE21F45160300E5D076 /* Controller */ = {
@@ -140,7 +140,7 @@
 				39A9B7831F4543190048A4DD /* DetailViewController.swift */,
 				CA649AC91F44DC9A00E5D076 /* MainViewController.swift */,
 			);
-			name = Controller;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		CAA21EE01F59EC8E001F4B8E /* WalmartLabsTests */ = {
